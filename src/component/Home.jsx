@@ -12,8 +12,8 @@ const Home = () => {
   const [url, setUrl] = useState("");
   const [shrtUrl, setShortUrl] = useState("");
   const [auth, setAuth] = useState(false);
-  const userInfo=JSON.parse(localStorage.getItem('userInfo'));
-  const id=userInfo._id;
+  const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+  const id = userInfo._id;
 
   const Authentication = async () => {
 
@@ -50,10 +50,11 @@ const Home = () => {
     }
   }
   useEffect(() => {
-    if(!auth) Authentication(); 
+    if (!auth) Authentication();
   }, []);
-  return store.ActiveUser===null?<h1>User Data not Found</h1>:(
-    <div className="bg-slate-600 h-screen">
+  return store.ActiveUser === null ? <h1>User Data not Found</h1> : (
+    <div className="bg-slate-600 h-screen overflow-hidden
+    ">
       <div className="flex justify-center mr-2">
         <div>
           <h1 className="p-2 font-bold text-white bg-purple-700 m-5 rounded-lg">Login User {userInfo.name}</h1>
@@ -71,22 +72,22 @@ const Home = () => {
       </div>
       <div className="flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-3xl font-bold m-4 text-yellow-300 border rounded-lg p-4 bg-black">URL Shortener</h1>
+          <h1 className=" w-[80%] md:w-full m-auto mb-4 md:mb-4 text-3xl font-bold  text-yellow-300 border rounded-lg p-4 bg-black">URL Shortener</h1>
           <input
             type="text"
             placeholder="Enter URL"
-            className="p-2 border border-gray-400 rounded-lg mb-4 w-full"
+            className="p-2 border border-gray-400 rounded-lg mb-4 w-1/2 md:w-full"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
           />
           <button
-            className="p-2 bg-blue-500 text-white text-lg font-bold rounded-lg w-full"
+            className="p-2 bg-blue-500 text-white text-lg font-bold rounded-lg w-[52%] md:w-full"
             onClick={handleUrl}
           >
             Shorten
           </button>
-          <p className="mt-4 text-green-500 border rounded-lg">
-            <Link to={shrtUrl} className="m-4 text-xl">{shrtUrl}</Link>
+          <p className="m-auto md:mt-4 overflow-hidden mt-4 p-2 md:p-2 text-green-500 border rounded-lg w-1/2 md:w-full">
+            <Link to={shrtUrl} className="">{shrtUrl}</Link>
           </p>
         </div>
       </div>
