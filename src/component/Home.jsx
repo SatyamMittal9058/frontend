@@ -13,7 +13,7 @@ const Home = () => {
   const [shrtUrl, setShortUrl] = useState("");
   const [auth, setAuth] = useState(false);
   const userInfo=JSON.parse(localStorage.getItem('userInfo'));
-  const userId=userInfo._id;
+  const id=userInfo._id;
 
   const Authentication = async () => {
 
@@ -42,7 +42,7 @@ const Home = () => {
     if (url.length !== 0) {
       const response = await axios.post(`${backendURL}/short/shortlink`, {
         url,
-        userId,
+        id,
       })
       setShortUrl(response.data.shortUrl);
     } else {
