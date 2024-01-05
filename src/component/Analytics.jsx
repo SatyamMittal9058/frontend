@@ -1,13 +1,14 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
+import { URL, backendURL } from './backendApi';
 
 const Analytics = () => {
     const userData=JSON.parse(localStorage.getItem('userInfo'));
     const userId=userData._id;
     const [data,setData]=useState();
     const AnalyticsOfUser=async()=>{
-        const response=await axios.get(`http://localhost:4000/short/analytics/${userId}`);
+        const response=await axios.get(`${backendURL}/short/analytics/${userId}`);
         setData(response.data.userLinkAnalytics);
     }
     

@@ -4,6 +4,7 @@ import axios from "axios";
 import { addUser } from '../store/userSlice';
 import { useDispatch } from 'react-redux';
 import {toast} from 'react-hot-toast'
+import { backendURL } from './backendApi';
 const Login = () => {
     const dispatch=useDispatch();
     const navigate=useNavigate();
@@ -13,7 +14,7 @@ const Login = () => {
     const handleSubmit=async(e)=>{
         e.preventDefault();
         try{
-            const response=await axios.post("http://localhost:4000/user/login",{
+            const response=await axios.post(`${backendURL}/user/login`,{
                 email,
                 password,
             });

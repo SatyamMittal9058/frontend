@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link, useNavigate } from 'react-router-dom';
 import { removeUser } from '../store/userSlice';
 import { useDispatch, useSelector } from "react-redux";
+import { backendURL } from './backendApi';
 import toast from 'react-hot-toast';
 const Home = () => {
   const dispatch = useDispatch();
@@ -15,8 +16,9 @@ const Home = () => {
   const userId=userInfo._id;
 
   const Authentication = async () => {
+
     try {
-      const response = await axios.get("http://localhost:4000/user/verification", {
+      const response = await axios.get(`${backendURL}/user/verification`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         }
@@ -38,7 +40,7 @@ const Home = () => {
       navigate('/');
     }
     if (url.length !== 0) {
-      const response = await axios.post("http://localhost:4000/short/shortlink", {
+      const response = await axios.post(`${backendURL}/short/shortlink`, {
         url,
         userId,
       })

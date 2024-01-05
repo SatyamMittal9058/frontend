@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, {useState } from 'react'
 import {Link, useNavigate} from "react-router-dom";
+import { URL, backendURL } from './backendApi';
 const Register= () => {
     const navigate=useNavigate();
     const [name,setName] = useState("");
@@ -10,7 +11,7 @@ const Register= () => {
     const handleSubmit=async(e)=>{
         e.preventDefault();
         try{
-            const res=await axios.post("http://localhost:4000/user/register",{
+            const res=await axios.post(`${backendURL}/user/register`,{
                 name,
                 email,
                 password,
